@@ -1,41 +1,29 @@
 package com.ktdsuniversity.edu.exceptions.calculator;
 
 public class Calculator implements CalculatorInterface {
-
-	private int number1;
-	private int number2;
-	private String operator;
-	
-	public Calculator(int number1, int number2) {
-		this.number1 = number1;
-		this.number2 = number2;
-	}
 	
 	@Override
-	public void add(String operator, int num1, int num2) {
-		if(operator.equals("+")) {
-			System.out.println(num1 + num2);
+	public double calculate(String operator, double number1, double number2) {
+		if(operator.equals("+") ) {
+			return number1 + number2;
+		}else if(operator.equals("-") ) {
+			return number1 - number2;
+		}else if(operator.equals("*") ) {
+			return number1 * number2;
+		}else if(operator.equals("/")) {
+			if(number2 == 0) {
+				throw new ErrorDivideException("0으로 나눌 수 없습니다");
+			}
+			return number1 / number2;
+		}else {
+			throw new ErrorOperatorException("잘못된 요청입니다. 연산 기호를 정확히 입력하세요.");
 		}
 	}
 	
 	@Override
-	public void substract(String operator, int num1, int num2) {
-		if(operator.equals("-")) {
-			System.out.println(num1 - num2);
-		}
-	}
-	
-	@Override
-	public void multiple(String operator, int num1, int num2) {
-		if(operator.equals("*")) {
-			System.out.println(num1 * num2);
-		}
-	}
-	
-	@Override
-	public void divide(String operator, int num1, int num2) {
-		if(operator.equals("/")) {
-			System.out.println(num1 * num2);
+	public void checkOperator(String operator) {
+		if (!operator.equals("+") && !operator.equals("-") && !operator.equals("*") && !operator.equals("/")) {
+			throw new ErrorOperatorException("잘못된 요청입니다. 연산 기호를 정확히 입력하세요.");
 		}
 	}
 }

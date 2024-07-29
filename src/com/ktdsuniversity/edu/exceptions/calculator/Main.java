@@ -6,6 +6,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Scanner keyboard = new Scanner(System.in);
+		Calculator calculator = new Calculator();
 		
 		while (true) {
 			System.out.println("계산기가 작동합니다");
@@ -16,13 +17,20 @@ public class Main {
 			if(operator.equals("exit")) {
 				System.out.println("계산기 종료");
 				break;
-			}else {
+			}
+			try {
+				calculator.checkOperator(operator);
 				System.out.println("첫 번째 숫자를 입력하십시오");
-				int number1 = keyboard.nextInt();
+				double number1 = keyboard.nextDouble();
 				System.out.println("두 번째 숫자를 입력하십시오");
-				int number2 = keyboard.nextInt();
-				Calculator calculator = new Calculator(number1, number2);
+				double number2 = keyboard.nextDouble();
 				keyboard.nextLine();
+				double result = calculator.calculate(operator, number1, number2);
+				System.out.println(result);
+			} catch (ErrorDivideException ede) {
+				System.out.println(ede.getMessage());
+			} catch (ErrorOperatorException eoe) {
+				System.out.println(eoe.getMessage());
 			}
 		}
 	}
