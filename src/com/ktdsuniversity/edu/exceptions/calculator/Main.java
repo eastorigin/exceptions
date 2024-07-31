@@ -21,7 +21,7 @@ public class Main {
 			try {
 				calculator.checkOperator(operator);
 				System.out.println("첫 번째 숫자를 입력하십시오");
-				double number1 = keyboard.nextDouble();
+				double number1 = keyboard.nextDouble();// public static keyboard(scanner)
 				System.out.println("두 번째 숫자를 입력하십시오");
 				double number2 = keyboard.nextDouble();
 				keyboard.nextLine();
@@ -33,6 +33,19 @@ public class Main {
 				System.out.println(eoe.getMessage());
 			}
 		}
+		
+//		while(true) {
+//			 public static keyboard(scanner) {
+//				 try {
+//					 return nextDouble()
+//				 }
+//				 catch {
+//					 inputMismatch
+//					 sout 
+//					 keyboard.next()
+//				 }
+//			 }
+//		}
 	}
 
 }
